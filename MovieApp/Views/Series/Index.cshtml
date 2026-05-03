@@ -1,0 +1,57 @@
+@model List<MovieApp.Models.TvShow>
+
+@{
+    ViewData["Title"] = "Series Populares";
+}
+
+<div class="page-header text-center mb-5">
+    <h1 class="display-5 fw-bold">📺 Series Populares</h1>
+    <p class="lead text-muted">Las más seguidas del momento según TMDB</p>
+</div>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-warning text-center">
+        No se pudieron cargar las series. Inténtalo de nuevo más tarde.
+    </div>
+}
+else
+{
+    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4">
+        @foreach (var show in Model)
+        {
+            <div class="col">
+                <div class="media-card card h-100 shadow-sm">
+                    @if (!string.IsNullOrEmpty(show.PosterPath))
+                    {
+                        <img src="@show.PosterUrl" alt="@show.Name" class="poster" />
+                    }
+                    else
+                    {
+                        <div class="no-poster">📺</div>
+                    }
+                    <div class="card-body p-2">
+                        <p class="media-title">@show.Name</p>
+                        <div class="d-flex gap-1 flex-wrap mb-2">
+                            <span class="rating-badge">⭐ @show.VoteAverage.ToString("0.0")</span>
+                            <span class="year-badge">@show.AirYear</span>
+                        </div>
+                        <p class="media-overview">@show.Overview</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@section Scripts {
+    <script>
+        document.querySelectorAll('.media-card').forEach((card, i) => {
+            card.style.opacity = '0';
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.3s ease';
+                card.style.opacity = '1';
+            }, i * 40);
+        });
+    </script>
+}

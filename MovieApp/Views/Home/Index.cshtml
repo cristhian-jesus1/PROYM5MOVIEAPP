@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="hero-section text-center py-5 mb-5 rounded-4">
+    <h1 class="display-4 fw-bold text-white">🎬 CineApp</h1>
+    <p class="lead mb-4" style="color: rgba(255,255,255,0.75)">
+        Descubre las películas y series más populares del momento
+    </p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a asp-controller="Movies" asp-action="Index" class="btn btn-warning btn-lg fw-bold px-4">
+            🎥 Ver Películas
+        </a>
+        <a asp-controller="Series" asp-action="Index" class="btn btn-outline-light btn-lg px-4">
+            📺 Ver Series
+        </a>
+    </div>
+</div>
+
+<div class="row g-4 text-center">
+    <div class="col-md-4">
+        <div class="info-card card h-100 shadow-sm border-0 p-4">
+            <div class="info-icon mb-3">🎥</div>
+            <h5 class="fw-bold">Películas Populares</h5>
+            <p class="text-muted">Las 20 películas más vistas y valoradas del momento a nivel mundial.</p>
+            <a asp-controller="Movies" asp-action="Index" class="btn btn-sm btn-dark fw-bold mt-2">Ver películas →</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="info-card card h-100 shadow-sm border-0 p-4">
+            <div class="info-icon mb-3">📺</div>
+            <h5 class="fw-bold">Series Populares</h5>
+            <p class="text-muted">Las series de televisión más seguidas en todas las plataformas.</p>
+            <a asp-controller="Series" asp-action="Index" class="btn btn-sm btn-dark fw-bold mt-2">Ver series →</a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="info-card card h-100 shadow-sm border-0 p-4">
+            <div class="info-icon mb-3">⭐</div>
+            <h5 class="fw-bold">Valoraciones Reales</h5>
+            <p class="text-muted">Puntuaciones actualizadas en tiempo real desde la API oficial de TMDB.</p>
+        </div>
+    </div>
+</div>
